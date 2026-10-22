@@ -1,0 +1,1 @@
+@props(['name','label','type'=>'text'])<div class="mb-4"><label for="{{ $name }}" class="mb-1 block text-sm font-semibold">{{ $label }}</label><input id="{{ $name }}" name="{{ $name }}" type="{{ $type }}" value="{{ old($name) }}" class="w-full rounded-xl border px-4 py-3" {{ $attributes }}>@error($name)<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror</div>

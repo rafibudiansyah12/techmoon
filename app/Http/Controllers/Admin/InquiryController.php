@@ -1,0 +1,4 @@
+<?php
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;use App\Models\Inquiry;use Illuminate\Http\Request;
+class InquiryController extends Controller {public function index(Request $r){$q=Inquiry::with(['customer','product']);if($r->filled('status'))$q->where('status',$r->status);if($r->filled('q'))$q->whereHas('customer',fn($c)=>$c->where('name','like','%'.$r->q.'%')->orWhere('email','like','%'.$r->q.'%'));return view('admin.inquiries',['rows'=>$q->latest()->paginate(15)->withQueryString()]);}public function show(Inquiry $inquiry){return view('admin.inquiry',['inquiry'=>$inquiry->load(['customer','product'])]);}public function update(Request $r,Inquiry $inquiry){$d=$r->validate(['status'=>'required|in:baru,diproses,deal,batal','internal_note'=>'nullable|string|max:5000']);$inquiry->update($d+['handled_by'=>$r->user()->id]);return back()->with('success','Inquiry diperbarui.');}}

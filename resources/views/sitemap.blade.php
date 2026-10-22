@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>{{ url('/') }}</loc></url><url><loc>{{ url('/produk') }}</loc></url><url><loc>{{ url('/portofolio') }}</loc></url><url><loc>{{ url('/event') }}</loc></url><url><loc>{{ url('/tentang') }}</loc></url>@foreach($products as $product)<url><loc>{{ route('product',$product->slug) }}</loc></url>@endforeach @foreach($events as $event)<url><loc>{{ route('event',$event) }}</loc></url>@endforeach</urlset>
