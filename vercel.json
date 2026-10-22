@@ -1,6 +1,7 @@
 {
     "version": 2,
     "framework": null,
+    "outputDirectory": "public",
     "functions": {
         "api/index.php": {
             "runtime": "vercel-php@0.7.3"
@@ -9,11 +10,11 @@
     "routes": [
         {
             "src": "/build/(.*)",
-            "dest": "/public/build/$1"
+            "dest": "/build/$1"
         },
         {
             "src": "/(favicon\\.ico|robots\\.txt)",
-            "dest": "/public/$1"
+            "dest": "/$1"
         },
         {
             "src": "/(.*)",
@@ -21,8 +22,10 @@
         }
     ],
     "env": {
+        "APP_NAME": "TechMoon",
         "APP_ENV": "production",
         "APP_DEBUG": "false",
+        "APP_KEY": "base64:lEtCX0LMm+cHMW2W/8EKZE5jI7SVOGFWLybwfLjM+1c=",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
@@ -31,6 +34,8 @@
         "VIEW_COMPILED_PATH": "/tmp",
         "CACHE_STORE": "array",
         "LOG_CHANNEL": "stderr",
-        "SESSION_DRIVER": "cookie"
+        "SESSION_DRIVER": "cookie",
+        "DB_CONNECTION": "sqlite",
+        "DB_DATABASE": "/tmp/database.sqlite"
     }
 }
